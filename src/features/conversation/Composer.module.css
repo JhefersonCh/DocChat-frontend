@@ -1,0 +1,18 @@
+.composer { display: grid; gap: var(--s-2); padding: var(--s-3) var(--s-4) var(--s-4); background: var(--bg-1); border-top: 1px solid var(--line); }
+.row { display: flex; gap: var(--s-2); align-items: flex-end; }
+.input { flex: 1; min-width: 0; resize: none; padding: var(--s-2) var(--s-3); font: 400 13px/20px var(--font-lab); color: var(--lab-text); background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.input::placeholder { color: var(--lab-muted); }
+.input:disabled { opacity: 0.5; }
+.send { width: 40px; height: 38px; font: 500 14px/1 var(--font-lab); color: var(--bg-0); background: var(--amber); border: 1px solid var(--amber); border-radius: var(--r-lab); cursor: pointer; transition: transform 140ms var(--ease-out), opacity 140ms var(--ease-out); }
+.send:active:not(:disabled) { transform: scale(0.97); }
+.send:disabled { color: var(--lab-muted); background: var(--bg-2); border-color: var(--line); cursor: not-allowed; }
+.stop { color: var(--amber); background: transparent; }
+.reason { margin: 0; font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.hint { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+@media (max-width: 767px) { .composer { position: sticky; bottom: 0; z-index: 1; } .input { font-size: 16px; } }
+.mic { display: grid; place-items: center; width: 40px; height: 38px; color: var(--lab-muted); background: transparent; border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; transition: color 140ms var(--ease-out), border-color 140ms var(--ease-out), background-color 140ms var(--ease-out), transform 140ms var(--ease-out); }
+.mic:active:not(:disabled) { transform: scale(0.97); }
+.mic:disabled { opacity: 0.4; cursor: not-allowed; }
+.mic:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.micOn { color: var(--bg-0); background: var(--amber); border-color: var(--amber); }
+@media (hover: hover) and (pointer: fine) { .mic:hover:not(:disabled):not(.micOn) { color: var(--amber); border-color: var(--amber); } }

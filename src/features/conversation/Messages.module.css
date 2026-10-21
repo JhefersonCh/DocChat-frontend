@@ -1,0 +1,9 @@
+.user { align-self: flex-end; max-width: 88%; display: grid; gap: var(--s-1); padding: var(--s-2) var(--s-3); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.userText { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 400 13px/20px var(--font-lab); color: var(--lab-text); }
+.unsent { border-color: var(--error); border-style: dashed; }
+.unsentLabel { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--error); }
+.assistant { display: grid; gap: var(--s-3); min-width: 0; }
+.paper { min-width: 0; padding: var(--s-4) var(--s-5); }
+.failedPaper { color: var(--ink-muted); border-left: 3px solid var(--error); }
+@media (max-width: 767px) { .paper { padding: var(--s-4); } }
+.weak { margin: 0 0 var(--s-2); padding: 2px var(--s-2); width: fit-content; font: 500 10px/16px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; color: var(--error-ink); border: 1px solid var(--error-ink); border-radius: var(--r-lab); }

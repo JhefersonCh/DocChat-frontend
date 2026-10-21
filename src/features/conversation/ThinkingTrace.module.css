@@ -1,0 +1,22 @@
+.panel { display: grid; gap: var(--s-3); padding: var(--s-3) var(--s-4); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.kicker { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); }
+.list { display: grid; gap: var(--s-2); margin: 0; padding: 0; list-style: none; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s-3); font: 400 12px/16px var(--font-lab); }
+.query { color: var(--lab-text); overflow-wrap: anywhere; }
+.query::before { content: '› '; color: var(--amber); }
+.stats { color: var(--lab-muted); white-space: nowrap; }
+.hits { color: var(--amber); font-weight: 500; }
+.ticks { position: relative; grid-column: 1 / -1; display: flex; gap: 3px; height: 6px; overflow: hidden; }
+.tick, .lit { flex: 1; max-width: 28px; background: var(--bg-3); }
+.lit { background: var(--bg-3); animation: light 360ms var(--ease-out) forwards; animation-delay: calc(var(--i) * 50ms + 120ms); }
+@keyframes light { to { background: var(--amber); } }
+.pass { position: absolute; inset: 0; border-right: 2px solid var(--amber); box-shadow: 6px 0 10px -3px var(--amber-glow); transform: translateX(-100%); animation: pass 640ms linear forwards; }
+@keyframes pass { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .pass { display: none; }
+  .lit { animation: none; background: var(--amber); }
+}
+.summary { font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.summary summary { cursor: pointer; width: fit-content; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; font-size: 11px; }
+.sumList { margin: var(--s-2) 0 0; padding: 0 0 0 var(--s-4); display: grid; gap: 2px; }
+.sumList span { color: var(--lab-muted); opacity: 0.7; }

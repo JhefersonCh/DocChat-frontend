@@ -1,0 +1,7 @@
+.wrap, .skeleton { min-height: 32px; animation: rise 220ms var(--ease-out) both; }
+.skeleton { display: flex; gap: var(--s-2); }
+.skeleton span { height: 32px; width: 38%; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); animation: pulse 1.4s ease-in-out infinite; }
+.skeleton span + span { width: 26%; animation-delay: 0.2s; }
+@keyframes rise { from { opacity: 0; transform: translateY(4px); } }
+@keyframes pulse { 50% { opacity: 0.45; } }
+@media (prefers-reduced-motion: reduce) { .wrap, .skeleton, .skeleton span { animation: none; } }

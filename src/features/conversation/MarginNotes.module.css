@@ -1,0 +1,47 @@
+.wrap { margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px dashed var(--ink-muted); }
+.reveal {
+  display: inline-flex; align-items: baseline; gap: var(--s-2); padding: var(--s-1) 0; text-align: left;
+  font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-muted); background: none; border: 0; cursor: pointer;
+  transition: color 160ms var(--ease-out), transform 120ms var(--ease-out);
+}
+.reveal:active { transform: scale(0.98); }
+.reveal[aria-expanded='true'] { color: var(--ink); }
+.reveal[aria-expanded='true'] .chev { transform: rotate(90deg); }
+@media (hover: hover) and (pointer: fine) { .reveal:hover { color: var(--ink); } }
+.chev { flex: none; width: 0; height: 0; border-left: 5px solid var(--amber); border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform 200ms var(--ease-out); }
+/* Clips the height animation; the padding/negative margin keeps the active note's glow inside the clip. */
+.panel { overflow: hidden; margin: var(--s-2) -4px 0; padding: 0 4px; }
+.list { margin: 0; padding: 0; list-style: none; }
+/* Spacing lives inside the li so a folding note can take its gap to zero with its height. */
+.item { position: relative; overflow: hidden; margin: -4px -4px 0; padding: 4px 4px 12px; }
+.note {
+  display: grid; grid-template-columns: auto 1fr; gap: 2px var(--s-3);
+  width: 100%; padding: var(--s-2) var(--s-3); text-align: left; cursor: pointer;
+  color: var(--ink); background: var(--paper-2);
+  border: 1px solid transparent; border-left: 3px solid var(--ink-muted); border-radius: var(--r-lab);
+  transition: color 160ms var(--ease-out), border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.snippet { color: var(--ink-muted); }
+.lit { border-left-color: var(--amber); }
+.lit .snippet, .active .snippet { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .note:hover .snippet { color: var(--ink); } }
+.active { border-color: var(--amber-ink); border-left-color: var(--amber); box-shadow: 0 0 0 3px var(--amber-glow); }
+.n { grid-row: 1 / span 2; align-self: start; font: 500 11px/20px var(--font-lab); color: var(--amber-ink); }
+.snippet { font: italic 400 14px/22px var(--font-read); display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.meta { font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.toggle { margin-top: var(--s-2); padding: var(--s-1) 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); background: none; border: 0; cursor: pointer; }
+@media (hover: hover) and (pointer: fine) { .toggle:hover { color: var(--ink); } }
+.wrap:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+/* Image sources: the thumb takes a third column; "ampliar" is a sibling button (a button can't nest in the note button). */
+.note[data-thumb='true'] { grid-template-columns: auto 1fr auto; }
+.thumb { grid-column: 3; grid-row: 1 / span 2; }
+.expand { position: absolute; top: 13px; right: 17px; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; font: 500 12px/1 var(--font-lab); color: var(--lab-text); background: rgb(11 12 14 / 0.7); border: 0; border-radius: var(--r-lab); cursor: pointer; opacity: 0.85; transition: opacity 140ms var(--ease-out), transform 120ms var(--ease-out); }
+.expand:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) { .expand:hover { opacity: 1; } }
+.expand:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; opacity: 1; }
+@media (pointer: coarse) { .expand { width: 32px; height: 32px; top: 8px; right: 12px; } }
+/* Audio sources: a mini waveform where the thumb goes; the ▶ is a sibling centred over it (a button can't nest in the note button). */
+.play { position: absolute; top: 17px; right: 52px; box-shadow: 0 2px 8px rgb(0 0 0 / 0.5); }
+@media (pointer: coarse) { .play { top: 13px; right: 46px; } }
+.frame { width: 112px; }

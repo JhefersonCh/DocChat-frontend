@@ -1,0 +1,20 @@
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.item { display: flex; max-width: 100%; }
+.chip {
+  max-width: 100%;
+  padding: 6px var(--s-3);
+  text-align: left;
+  font: 400 12px/18px var(--font-lab);
+  color: var(--lab-text);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lab);
+  cursor: pointer;
+  transition: transform 140ms var(--ease-out), background-color 140ms var(--ease-out),
+    border-color 140ms var(--ease-out), color 140ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover { color: var(--amber); border-color: var(--amber); background: var(--bg-3); }
+}
+.chip:active { transform: scale(0.97); }
+.chip:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
