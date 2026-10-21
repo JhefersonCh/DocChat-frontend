@@ -1,0 +1,124 @@
+.sidebar {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--s-3);
+  height: 100%;
+  min-height: 0;
+  background: var(--bg-1);
+  border-right: 1px solid var(--line);
+}
+
+.list {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--s-2);
+}
+
+.lib {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin: 0 var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  font: 500 11px/16px var(--font-lab);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lab-text);
+  text-decoration: none;
+  border: 1px dashed var(--line);
+  border-radius: var(--r-lab);
+  transition: background-color 140ms var(--ease-out), border-color 140ms var(--ease-out), color 140ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .lib:hover { background: var(--bg-2); border-color: var(--amber); } }
+.lib:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+.libOn { color: var(--amber); border-style: solid; border-color: var(--amber); background: var(--bg-2); }
+.libGlyph { flex: none; width: 20px; text-align: center; font-size: 14px; color: var(--amber); }
+.libText { flex: 1; }
+.libArrow { color: var(--lab-muted); }
+@media (pointer: coarse) { .lib { min-height: 44px; } }
+
+.sections {
+  display: grid;
+  align-content: start;
+  gap: var(--s-2);
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: var(--s-3);
+}
+
+.rule { width: calc(100% - var(--s-6, 32px)); margin: var(--s-1) auto; border: 0; border-top: 1px solid var(--line); }
+
+.brand {
+  display: flex;
+  justify-content: center;
+  padding: var(--s-4) var(--s-4) var(--s-1);
+  font: 400 24px/30px var(--font-display);
+  color: var(--lab-text);
+  text-decoration: none;
+}
+
+.mark {
+  display: none;
+}
+
+.foot {
+  display: grid;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+
+.cfg {
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+  font: 500 11px/16px var(--font-lab);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lab-muted);
+  text-decoration: none;
+}
+
+.cfg:hover,
+.on {
+  color: var(--amber);
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+  .libText,
+  .libArrow {
+    display: none;
+  }
+
+  .lib {
+    justify-content: center;
+    margin: 0 var(--s-2);
+    padding: var(--s-2) 0;
+  }
+
+  .full,
+  .cfgText {
+    display: none;
+  }
+
+  .mark {
+    display: block;
+    text-align: center;
+  }
+
+  .brand {
+    padding: var(--s-4) 0 var(--s-1);
+  }
+
+  .foot {
+    padding: var(--s-3) 0;
+    justify-items: center;
+  }
+
+  .foot :global(span[title])>span:nth-child(2) {
+    display: none;
+  }
+}

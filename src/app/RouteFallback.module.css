@@ -1,0 +1,2 @@
+.wrap { display: grid; gap: var(--s-3); max-width: 560px; padding: var(--s-6); color: var(--lab-muted); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; }
+.wrap p { margin: 0; }

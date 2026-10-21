@@ -1,0 +1,35 @@
+/* Breakpoints literales (CSS no admite var() en @media): 768px y 1200px. */
+.shell {
+  display: grid;
+  height: 100%;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: 'sidebar topbar' 'sidebar content';
+}
+.topbar { grid-area: topbar; display: flex; align-items: center; justify-content: flex-end; min-height: 44px; padding: 0 var(--s-4); }
+.barEnd { margin-left: auto; }
+.sidebar { grid-area: sidebar; min-width: 0; min-height: 0; }
+.sidebar > aside { height: 100%; }
+.content { grid-area: content; min-width: 0; min-height: 0; overflow: hidden; outline: none; }
+.bar { display: none; }
+
+.skip {
+  position: fixed; top: var(--s-2); left: var(--s-2); z-index: 80; padding: var(--s-2) var(--s-3);
+  font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--bg-0); background: var(--amber); border-radius: var(--r-lab); text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip:focus-visible { transform: none; }
+
+/* Tablet: sidebar colapsa a riel. */
+@media (max-width: 1199px) { .shell { grid-template-columns: var(--rail-w) 1fr; } }
+
+/* Teléfono: barra superior (≡ abre el drawer de chats) + contenido a pantalla completa. */
+@media (max-width: 767px) {
+  .shell { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); grid-template-areas: 'bar' 'content'; }
+  .bar { grid-area: bar; display: flex; align-items: center; gap: var(--s-2); min-height: 48px; padding: 0 var(--s-2); background: var(--bg-1); border-bottom: 1px solid var(--line); }
+  .menu { display: grid; place-items: center; width: 44px; height: 44px; font: 400 24px/1 var(--font-lab); color: var(--lab-text); background: none; border: 0; border-radius: var(--r-lab); cursor: pointer; transition: transform 140ms var(--ease-out); }
+  .menu:active { transform: scale(0.94); }
+  .brand { font: 400 24px/30px var(--font-display); color: var(--lab-text); text-decoration: none; }
+  .content { overflow-y: auto; }
+}

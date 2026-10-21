@@ -1,0 +1,40 @@
+.section { display: grid; gap: var(--s-1); }
+.head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-1); padding: 0 var(--s-3) 0 var(--s-2); }
+.toggle { flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--s-2); min-height: 32px; padding: 0 var(--s-2); font: 500 10px/16px var(--font-lab); letter-spacing: 0.1em; text-transform: uppercase; color: var(--lab-muted); background: none; border: 0; border-radius: var(--r-lab); cursor: pointer; text-align: left; transition: color 140ms var(--ease-out), background-color 140ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .toggle:hover { color: var(--lab-text); background: var(--bg-2); } }
+.toggle:focus-visible, .add:focus-visible, .more:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+.chev { flex: none; transition: transform 200ms var(--ease-out); }
+.chev[data-open='true'] { transform: rotate(90deg); }
+.icon { flex: none; display: grid; place-items: center; color: var(--amber); }
+.title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.badge { flex: none; min-width: 20px; padding: 0 6px; font: 500 10px/16px var(--font-lab); text-align: center; letter-spacing: 0; color: var(--lab-text); background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; }
+.add { flex: none; width: 28px; height: 28px; font: 400 18px/1 var(--font-lab); color: var(--amber); background: none; border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; transition: transform 120ms var(--ease-out), background-color 140ms var(--ease-out); }
+.add span { display: inline-block; transition: transform 200ms var(--ease-out); }
+.add span[data-open='true'] { transform: rotate(45deg); }
+.add:disabled { opacity: 0.45; cursor: progress; }
+@media (hover: hover) and (pointer: fine) { .add:hover:not(:disabled) { background: var(--amber-glow); } }
+.add:active { transform: scale(0.94); }
+.body { display: grid; }
+.more { margin: var(--s-1) var(--s-3) var(--s-1) var(--s-4); min-height: 28px; padding: 0 var(--s-2); justify-self: start; font: 500 11px/16px var(--font-lab); letter-spacing: 0.04em; color: var(--lab-muted); background: none; border: 0; border-radius: var(--r-lab); cursor: pointer; transition: color 140ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .more:hover { color: var(--amber); } }
+@media (pointer: coarse) { .toggle, .more { min-height: 44px; } .add { width: 44px; height: 44px; } }
+
+/* Riel (tablet): solo el glifo de la sección. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .head { justify-content: center; padding: 0; }
+  .chev, .title, .badge, .add, .more { display: none; }
+  .toggle { flex: none; justify-content: center; padding: 0 var(--s-3); }
+}
+
+/* Fijar / desfijar (fila de chat o proyecto) */
+.pin { flex: none; display: grid; place-items: center; width: 28px; height: 28px; color: var(--lab-muted); background: none; border: 0; border-radius: var(--r-lab); cursor: pointer; opacity: 0; transition: opacity 140ms var(--ease-out), color 140ms var(--ease-out), transform 120ms var(--ease-out); }
+.pin[data-pinned='true'] { color: var(--amber); opacity: 1; }
+:is(li, div):hover > .pin, :is(li, div):focus-within > .pin, .pin:focus-visible { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { .pin:hover { color: var(--amber); } }
+@media (hover: none) { .pin { opacity: 0.75; } .pin[data-pinned='true'] { opacity: 1; } }
+.pin:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+.pin:active { transform: scale(0.9); }
+@media (pointer: coarse) { .pin { width: 36px; height: 36px; } }
+.pinLabel { margin: 0; padding: var(--s-1) var(--s-4) 2px; font: 500 10px/14px var(--font-lab); letter-spacing: 0.1em; text-transform: uppercase; color: var(--lab-muted); list-style: none; }
+.pinDivider { height: 1px; margin: var(--s-2) var(--s-4); background: var(--line); list-style: none; }
+@media (min-width: 768px) and (max-width: 1199px) { .pinLabel { display: none; } .pinDivider { margin: var(--s-2) var(--s-3); } .pin { display: none; } }
