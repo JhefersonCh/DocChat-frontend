@@ -1,0 +1,7 @@
+.tags { display: flex; flex-wrap: wrap; gap: var(--s-1); margin: 0; padding: 0; list-style: none; }
+.tag { display: inline-flex; align-items: center; gap: 6px; min-height: 22px; padding: 0 var(--s-2); font: 500 10px/16px var(--font-lab); letter-spacing: 0.04em; color: var(--lab-text); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-pill); }
+.tag[data-auto='true'] { border-style: dashed; }
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+.x { padding: 0 0 0 2px; font: 400 14px/1 var(--font-lab); color: var(--lab-muted); background: none; border: 0; cursor: pointer; }
+.x:hover { color: var(--error); }
+@media (pointer: coarse) { .x { min-width: 28px; min-height: 28px; } }

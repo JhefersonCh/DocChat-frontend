@@ -1,0 +1,29 @@
+.form { display: flex; gap: var(--s-1); padding: 0 var(--s-3) var(--s-1) var(--s-3); overflow: hidden; }
+.input { flex: 1; min-width: 0; min-height: 32px; padding: 0 var(--s-2); font: 400 12px/16px var(--font-lab); color: var(--lab-text); background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.input:focus-visible { border-color: var(--amber); outline: none; }
+.ok { min-height: 32px; padding: 0 var(--s-2); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--bg-0); background: var(--amber); border: 0; border-radius: var(--r-lab); cursor: pointer; }
+.ok:disabled { opacity: 0.45; cursor: not-allowed; }
+.list { display: grid; gap: var(--s-1); margin: 0; padding: 0 var(--s-3); list-style: none; }
+.card { position: relative; display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3); color: var(--lab-text); text-decoration: none; background: var(--bg-2); border: 1px solid var(--line); border-left: 3px solid var(--accent, var(--amber)); border-radius: var(--r-lab); transition: background-color 140ms var(--ease-out), border-color 140ms var(--ease-out), transform 120ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .card:hover { border-color: var(--accent, var(--amber)); } }
+.card:active { transform: scale(0.99); }
+.card:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+.active { background: var(--amber-glow); border-color: var(--accent, var(--amber)); }
+.glyph { flex: none; display: grid; place-items: center; width: 28px; height: 28px; color: var(--accent, var(--amber)); background: var(--bg-0); border-radius: 6px; }
+.glyph svg { width: 16px; height: 16px; }
+.info { display: grid; flex: 1; min-width: 0; gap: 1px; }
+.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 500 13px/18px var(--font-lab); }
+.meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+.empty { margin: 0; padding: var(--s-1) var(--s-4); font: 400 12px/16px var(--font-lab); color: var(--lab-muted); }
+@media (pointer: coarse) { .card { min-height: 52px; } }
+
+/* Riel (tablet): solo glifos. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .info, .empty, .form { display: none; }
+  .list { padding: 0 var(--s-2); }
+  .card { justify-content: center; padding: var(--s-2) 0; }
+}
+.row { position: relative; }
+.pinBtn { position: absolute; top: 50%; right: var(--s-2); transform: translateY(-50%); }
+.pinBtn:active { transform: translateY(-50%) scale(0.9); }
+.row .card { padding-right: 36px; }

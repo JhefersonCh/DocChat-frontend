@@ -1,0 +1,5 @@
+.crumb { display: inline-flex; align-items: center; gap: var(--s-2); max-width: 100%; width: fit-content; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); text-decoration: none; transition: color 140ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .crumb:hover { color: var(--amber); } }
+.dot { flex: none; width: 8px; height: 8px; border-radius: 50%; }
+.name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (pointer: coarse) { .crumb { min-height: 44px; } }

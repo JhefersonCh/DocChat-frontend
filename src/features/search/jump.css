@@ -1,0 +1,10 @@
+/* Message a search result jumped to: amber pulse + marked words (CSS Custom Highlight API). */
+::highlight(search-hit) { background-color: rgb(255 176 0 / 0.55); color: #fff; }
+[data-message-id][data-jump='on'] { animation: search-jump 1.6s var(--ease-out) 2; border-radius: var(--r-lab); }
+@keyframes search-jump {
+  0% { box-shadow: 0 0 0 0 rgb(255 176 0 / 0.55), 0 0 0 1px var(--amber); }
+  100% { box-shadow: 0 0 0 14px rgb(255 176 0 / 0), 0 0 0 1px rgb(255 176 0 / 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-message-id][data-jump='on'] { animation: none; box-shadow: 0 0 0 1px var(--amber); }
+}

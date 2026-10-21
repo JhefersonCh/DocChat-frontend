@@ -1,0 +1,8 @@
+.bar { position: sticky; bottom: var(--s-4); z-index: 10; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); background: var(--bg-2); border: 1px solid var(--amber); border-radius: var(--r-lab); box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.7); }
+.count { font: 400 12px/16px var(--font-lab); color: var(--lab-muted); }
+.count b { color: var(--amber); font-weight: 600; }
+.select { min-height: 32px; padding: 0 var(--s-2); max-width: 200px; font: 400 12px/16px var(--font-lab); color: var(--lab-text); background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.group { display: inline-flex; flex-wrap: wrap; gap: var(--s-2); margin-left: auto; }
+.err { flex-basis: 100%; }
+@media (pointer: coarse) { .select { min-height: 44px; } }
+@media (max-width: 767px) { .bar { bottom: var(--s-2); padding: var(--s-3); } .group { margin-left: 0; } }
