@@ -1,0 +1,16 @@
+.menu { position: fixed; z-index: 60; display: grid; gap: 1px; padding: 2px; background: var(--bg-3); border: 1px solid var(--line); border-top: 2px solid var(--amber); border-radius: var(--r-lab); box-shadow: 0 8px 24px -8px rgb(0 0 0 / .7); animation: pop 140ms var(--ease-out); }
+.row { display: flex; gap: 1px; }
+.btn { min-height: 32px; padding: 0 var(--s-3); background: transparent; color: var(--lab-text); border: 0; border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: transform 140ms var(--ease-out), color 140ms var(--ease-out), background-color 140ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .btn:hover { color: var(--amber); background: var(--bg-2); } }
+.btn:active { transform: scale(0.97); }
+.btn:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+.note { padding: 0 var(--s-3); font: 400 11px/32px var(--font-lab); color: var(--lab-muted); }
+@keyframes pop { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .menu { animation: none; } }
+@media (pointer: coarse) { .btn { min-height: 44px; } }
+.level { display: flex; align-items: center; gap: var(--s-2); padding: 2px var(--s-3) 4px; border-top: 1px solid var(--line); }
+.levelLabel { font: 500 10px/16px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lab-muted); }
+.slider { flex: 1; min-width: 0; height: 24px; margin: 0; accent-color: var(--amber); cursor: pointer; }
+.slider:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.levelValue { min-width: 9ch; text-align: right; font: 400 11px/16px var(--font-lab); color: var(--lab-text); }
+@media (pointer: coarse) { .slider { height: 36px; } }

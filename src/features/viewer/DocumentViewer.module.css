@@ -1,0 +1,29 @@
+.doc { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--s-2); height: 100%; min-height: 0; }
+.head { display: grid; gap: var(--s-2); min-width: 0; }
+.top { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
+.top > :first-child { flex: 1; min-width: 0; }
+.idle { margin: 0; line-height: 28px; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.body { min-height: 0; height: 100%; }
+.read { min-height: 0; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-1); }
+.split { min-height: 0; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
+.split[data-inspecting='true'] { grid-template-columns: minmax(0, 1fr) minmax(200px, 38%); }
+@media (max-width: 767px) { .split[data-inspecting='true'] { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 3fr) minmax(0, 2fr); } }
+.tool { flex: none; display: inline-flex; align-items: center; min-height: 32px; padding: 0 var(--s-3); background: var(--bg-2); color: var(--lab-muted); border: 1px solid var(--line); border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: color 140ms var(--ease-out), border-color 140ms var(--ease-out), transform 120ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .tool:hover { color: var(--lab-text); } }
+.tool:active { transform: scale(0.97); }
+.tool[aria-pressed='true'] { color: var(--amber); border-color: var(--amber); }
+.tool:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+@media (pointer: coarse) { .tool { min-height: 44px; } }
+.openBtn { display: flex; gap: var(--s-3); align-items: baseline; width: 100%; min-height: 44px; padding: var(--s-3) var(--s-4); background: var(--bg-2); color: var(--lab-text); border: 1px solid var(--line); border-left: 2px solid var(--amber); border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; text-align: left; cursor: pointer; transition: transform 140ms var(--ease-out); }
+.openBtn:active { transform: scale(0.98); }
+.openBtn::after { content: '↑'; margin-left: auto; color: var(--amber); }
+.file { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--lab-muted); }
+.close { flex: none; display: inline-flex; align-items: center; min-height: 36px; padding: 0 var(--s-3); background: var(--bg-2); color: var(--lab-text); border: 1px solid var(--line); border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+.inSheet .idle span { display: none; }
+/* Phone sheet: title on its own line; search takes the slack, so Fragmentos / Cerrar never clip. */
+.inSheet { flex-wrap: wrap; row-gap: var(--s-2); }
+.inSheet > :first-child { flex: 1 1 100%; }
+.inSheet > :nth-child(2) { flex: 1 1 120px; width: auto; }
+/* Estela del cursor (#8): sólo la pinta CSS; la posición llega por --mx/--my. */
+.doc::after { content: ''; position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; transition: opacity 300ms var(--ease-out); background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgb(255 176 0 / 0.04), transparent 70%); }
+.doc[data-glow='on']::after { opacity: 1; }

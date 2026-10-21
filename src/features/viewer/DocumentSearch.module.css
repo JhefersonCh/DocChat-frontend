@@ -1,0 +1,21 @@
+.root { position: relative; flex: none; width: min(240px, 46%); }
+.form { margin: 0; }
+.input { width: 100%; min-height: 32px; padding: 0 var(--s-3); background: var(--bg-2); color: var(--lab-text); border: 1px solid var(--line); border-radius: var(--r-lab); font: 400 12px/16px var(--font-lab); transition: border-color 140ms var(--ease-out); }
+.input::placeholder { color: var(--lab-muted); }
+.input:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; border-color: var(--amber); }
+.panel { position: absolute; z-index: 30; top: calc(100% + 4px); right: 0; width: min(440px, 92vw); max-height: min(60dvh, 420px); overflow-y: auto; background: var(--bg-2); border: 1px solid var(--line); border-top: 2px solid var(--amber); border-radius: var(--r-lab); box-shadow: 0 12px 32px -12px rgb(0 0 0 / .7); animation: in 140ms var(--ease-out); }
+.status { margin: 0; padding: var(--s-3); font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+.list { list-style: none; margin: 0; padding: 0; }
+.hit { display: grid; gap: 2px; width: 100%; padding: var(--s-2) var(--s-3); text-align: left; background: transparent; color: var(--lab-text); border: 0; border-bottom: 1px solid var(--line); cursor: pointer; transition: background-color 140ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .hit:hover { background: var(--bg-3); } }
+.hit:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+.snippet { font: 400 13px/18px var(--font-read); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.meta { font: 400 10px/14px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+@keyframes in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .panel { animation: none; } }
+@media (pointer: coarse) { .input { min-height: 44px; } }
+@media (max-width: 767px) { .panel { left: 0; right: auto; width: min(440px, calc(100vw - 32px)); } }
+.hit[data-thumb='true'] { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-3); }
+.thumb { grid-row: 1 / span 2; }
+.hit[data-thumb='true'] > :not(.thumb) { grid-column: 2; }
+.frame { width: 88px; }

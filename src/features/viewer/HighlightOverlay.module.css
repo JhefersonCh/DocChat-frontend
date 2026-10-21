@@ -1,0 +1,16 @@
+.layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; mix-blend-mode: multiply; }
+.mark {
+  position: absolute;
+  background: var(--amber-mark);
+  border-bottom: 2px solid var(--amber-ink);
+  border-radius: 1px;
+}
+.box { position: absolute; z-index: 3; pointer-events: none; }
+.fill { position: absolute; inset: 0; background: rgb(255 176 0 / 0.14); }
+.edge { position: absolute; background: var(--amber); box-shadow: 0 0 3px rgb(0 0 0 / 0.55); }
+.edge[data-side='top'], .edge[data-side='bottom'] { left: 0; right: 0; height: 3px; }
+.edge[data-side='left'], .edge[data-side='right'] { top: 0; bottom: 0; width: 3px; }
+.edge[data-side='top'] { top: 0; }
+.edge[data-side='bottom'] { bottom: 0; }
+.edge[data-side='left'] { left: 0; }
+.edge[data-side='right'] { right: 0; }
