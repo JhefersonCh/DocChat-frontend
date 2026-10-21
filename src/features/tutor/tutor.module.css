@@ -1,0 +1,57 @@
+.panel { height: 100%; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr); }
+.scroll { min-height: 0; overflow-y: auto; padding: var(--s-4); display: grid; gap: var(--s-4); align-content: start; }
+.state { margin: 0; font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.kicker { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+.empty { display: grid; gap: var(--s-3); justify-items: start; padding: var(--s-5) 0; }
+.emptyTitle { margin: 0; font: 400 28px/32px var(--font-display); color: var(--lab-text); }
+
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.chip {
+  display: inline-flex; align-items: baseline; gap: var(--s-2); max-width: 100%; padding: 2px var(--s-3);
+  font: 500 11px/20px var(--font-lab); color: var(--lab-muted); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-pill);
+  background-image: linear-gradient(90deg, rgb(255 176 0 / 0.22) calc(var(--m, 0) * 100%), transparent calc(var(--m, 0) * 100%));
+  transition: background-image 400ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.chip[data-answered='true'] { color: var(--lab-text); border-color: rgb(255 176 0 / 0.45); }
+.chipName { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 22ch; }
+.chip b { color: var(--amber); font-weight: 500; }
+
+.card { display: grid; gap: var(--s-4); padding: var(--s-4); background: var(--bg-1); border: 1px solid var(--line); border-left: 2px solid var(--amber); border-radius: var(--r-lab); }
+.question { margin: 0; font: 400 24px/30px var(--font-display); color: var(--lab-text); text-wrap: balance; }
+.form { display: grid; gap: var(--s-3); }
+.textarea {
+  width: 100%; min-height: 112px; resize: vertical; padding: var(--s-3); font: 400 15px/22px var(--font-read); color: var(--lab-text);
+  background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab); transition: border-color 140ms var(--ease-out);
+}
+.textarea:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; border-color: var(--amber); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+.hint { font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+@media (pointer: coarse) { .hint { display: none; } }
+
+.grade { display: grid; gap: var(--s-4); }
+.score { display: grid; gap: var(--s-2); font: 500 12px/18px var(--font-lab); color: var(--lab-text); }
+.score b { color: var(--amber); font-weight: 500; }
+.meter { display: block; height: 4px; background: var(--bg-3); border-radius: 2px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--amber); transform-origin: left center; }
+.points { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.point { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--s-2); }
+.mark { font: 500 14px/22px var(--font-lab); color: var(--lab-muted); text-align: center; }
+.point[data-covered='true'] .mark { color: #6FCF97; }
+.pointBody { display: grid; gap: var(--s-1); justify-items: start; min-width: 0; }
+.pointText { margin: 0; font: 400 15px/22px var(--font-read); color: var(--lab-text); }
+.point[data-covered='false'] .pointText { color: var(--lab-muted); }
+.said { margin: 0; font: 400 12px/18px var(--font-lab); color: #6FCF97; }
+.quote { margin: 0; padding-left: var(--s-3); border-left: 2px solid var(--line); font: italic 400 13px/20px var(--font-read); color: var(--lab-muted); }
+.source {
+  padding: 0 6px; font: 500 11px/18px var(--font-lab); color: var(--amber); background: transparent; border: 1px solid var(--line); border-radius: var(--r-lab);
+  cursor: pointer; transition: transform 140ms var(--ease-out), background-color 140ms var(--ease-out), border-color 140ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .source:hover { background: var(--amber-glow); border-color: var(--amber); } }
+.source:active { transform: scale(0.97); }
+.source:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+@media (pointer: coarse) { .source { min-height: 36px; } }
+.feedback { margin: 0; font: 400 14px/21px var(--font-read); color: var(--lab-text); }
+.followUp { margin: 0; display: grid; gap: var(--s-1); padding: var(--s-3) var(--s-4); font: italic 400 20px/26px var(--font-display); color: var(--amber-hi); background: var(--amber-glow); border-left: 2px solid var(--amber); }
+.followUp small { font: 500 10px/14px var(--font-lab); font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lab-muted); }
+@media (prefers-reduced-motion: reduce) { .chip, .textarea { transition: none; } }

@@ -1,0 +1,75 @@
+.page {
+  display: inline; padding: 0 6px; font: 500 11px/18px var(--font-lab); color: var(--amber); background: transparent;
+  border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; white-space: nowrap;
+  transition: transform 140ms var(--ease-out), background-color 140ms var(--ease-out), border-color 140ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .page:hover { background: var(--amber-glow); border-color: var(--amber); } }
+.page:active { transform: scale(0.97); }
+.page:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; }
+.row { border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.q { width: 100%; text-align: left; padding: var(--s-2) 0; font: 400 16px/22px var(--font-read); color: var(--lab-text); background: transparent; border: 0; cursor: pointer; }
+.q[aria-expanded='true'] { color: var(--amber); }
+.q:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.a { margin: 0 0 var(--s-2); font: 400 14px/21px var(--font-read); color: var(--lab-text); }
+.guide { display: grid; gap: var(--s-4); }
+.block { display: grid; gap: var(--s-2); }
+.h { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+.sub { margin: 0; font: 400 18px/22px var(--font-display); }
+.dl { margin: 0; display: grid; gap: var(--s-2); }
+.term { display: grid; gap: 2px; }
+.term dt { font: 500 12px/18px var(--font-lab); color: var(--amber); }
+.term dd { margin: 0; font: 400 14px/21px var(--font-read); }
+.quiz { display: grid; gap: var(--s-4); justify-items: start; }
+.score { margin: 0; font: 500 12px/18px var(--font-lab); color: var(--amber); }
+.qs { display: grid; gap: var(--s-2); margin: 0; padding: 0; border: 0; min-width: 0; width: 100%; }
+.qtext { padding: 0; margin-bottom: var(--s-2); font: 400 16px/22px var(--font-read); }
+.opt {
+  display: flex; gap: var(--s-2); text-align: left; padding: var(--s-2) var(--s-3); font: 400 13px/19px var(--font-read); color: var(--lab-text);
+  background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer;
+  transition: transform 140ms var(--ease-out), background-color 140ms var(--ease-out), border-color 140ms var(--ease-out);
+}
+.opt span { font: 500 11px/19px var(--font-lab); color: var(--lab-muted); }
+@media (hover: hover) and (pointer: fine) { .opt:hover:not(:disabled) { border-color: var(--amber); } }
+.opt:active:not(:disabled) { transform: scale(0.98); }
+.opt:disabled { cursor: default; }
+.opt[data-state='right'] { border-color: #6FCF97; background: rgb(111 207 151 / 0.12); }
+.opt[data-state='wrong'] { border-color: var(--error); background: rgb(255 107 94 / 0.12); }
+.opt:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.cards { display: grid; gap: var(--s-3); perspective: 800px; }
+.card { width: 100%; min-height: 150px; padding: 0; background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; color: var(--lab-text); }
+.card:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.cardFace { display: grid; gap: var(--s-2); align-content: center; justify-items: center; min-height: 148px; padding: var(--s-4); text-align: center; font: 400 20px/26px var(--font-display); }
+.cardFace small { font: 500 10px/14px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lab-muted); }
+.cardFace[data-back='true'] { font: 400 15px/22px var(--font-read); color: var(--amber); }
+.nav { display: flex; align-items: center; gap: var(--s-3); }
+.count { font: 500 12px/18px var(--font-lab); color: var(--lab-muted); }
+.tree { list-style: none; margin: 0; padding: 0 0 0 var(--s-4); overflow: hidden; border-left: 1px solid var(--line); }
+.rootTree { padding-left: 0; border-left: 0; }
+.node { padding: 2px 0; }
+.nodeRow { display: flex; align-items: baseline; gap: var(--s-2); flex-wrap: wrap; }
+.toggle { width: 20px; padding: 0; font: 400 12px/20px var(--font-lab); color: var(--lab-muted); background: transparent; border: 0; cursor: pointer; }
+.toggle span { display: inline-block; transition: transform 160ms var(--ease-out); }
+.toggle span[data-open='true'] { transform: rotate(90deg); }
+.toggle:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+.leaf { width: 20px; text-align: center; color: var(--lab-muted); }
+.nodeTitle { font: 400 15px/22px var(--font-read); }
+.nodeTitle[data-root='true'] { font: 400 22px/26px var(--font-display); color: var(--amber); }
+.tableWrap { overflow-x: auto; }
+.extract { display: grid; gap: var(--s-3); justify-items: start; max-width: 100%; }
+.table { border-collapse: collapse; font: 400 13px/19px var(--font-read); }
+.table th { text-align: left; padding: var(--s-2); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); border-bottom: 1px solid var(--line); white-space: nowrap; }
+.table td { padding: var(--s-2); vertical-align: top; border-bottom: 1px solid var(--line); min-width: 100px; }
+.none { color: var(--lab-muted); }
+.quote { display: none; margin-top: 4px; font: italic 400 12px/17px var(--font-read); color: var(--lab-muted); quotes: none; }
+.table td:hover .quote, .table td:focus-within .quote { display: block; }
+@media (hover: none) { .quote { display: block; } }
+.chart { margin: 0; display: grid; gap: var(--s-2); }
+.svg { width: 100%; height: auto; }
+.tick { font: 400 9px var(--font-lab); fill: var(--lab-muted); }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-3); font: 400 11px/16px var(--font-lab); }
+.legend i { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 1px; }
+.note { margin: 0; font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+.empty { margin: 0; font: 400 13px/19px var(--font-read); color: var(--lab-muted); }
+@media (prefers-reduced-motion: reduce) { .opt, .page, .toggle span { transition: none; } }

@@ -1,0 +1,39 @@
+.panel { height: 100%; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr); }
+.scroll { min-height: 0; overflow-y: auto; padding: var(--s-4); display: grid; gap: var(--s-3); align-content: start; }
+.state { margin: 0; font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.kinds { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--s-2); }
+.kind {
+  width: 100%; height: 100%; display: grid; gap: 2px; align-content: start; text-align: left; padding: var(--s-2) var(--s-3);
+  font: 500 12px/16px var(--font-lab); color: var(--lab-text); background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: var(--r-lab); cursor: pointer;
+  transition: transform 140ms var(--ease-out), background-color 140ms var(--ease-out), border-color 140ms var(--ease-out), color 140ms var(--ease-out);
+}
+.kind small { font: 400 11px/15px var(--font-lab); color: var(--lab-muted); }
+@media (hover: hover) and (pointer: fine) { .kind:hover:not(:disabled) { color: var(--amber); border-color: var(--amber); background: var(--bg-3); } }
+.kind:active:not(:disabled) { transform: scale(0.97); }
+.kind:disabled { opacity: 0.45; cursor: not-allowed; }
+.kind[aria-expanded='true'] { border-color: var(--amber); }
+.kind:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.config { display: grid; gap: var(--s-2); padding: var(--s-3); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.label { font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+.input { min-height: 36px; padding: 0 var(--s-3); font: 400 13px/20px var(--font-lab); color: var(--lab-text); background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.input:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); }
+.card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); overflow: hidden; }
+.card[data-status='failed'] { border-color: var(--error); }
+.cardHead { display: flex; align-items: stretch; }
+.cardToggle { flex: 1; min-width: 0; display: grid; gap: 2px; text-align: left; padding: var(--s-3); color: var(--lab-text); background: transparent; border: 0; cursor: pointer; }
+.cardToggle:disabled { cursor: default; }
+.cardToggle:focus-visible, .del:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+.cardTitle { font: 500 12px/16px var(--font-lab); letter-spacing: 0.04em; text-transform: uppercase; }
+.cardMeta { font: 400 11px/16px var(--font-lab); color: var(--lab-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.del { width: 36px; font: 400 18px/1 var(--font-lab); color: var(--lab-muted); background: transparent; border: 0; cursor: pointer; transition: color 140ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .del:hover { color: var(--error); } }
+.failed { display: grid; gap: var(--s-2); padding: 0 var(--s-3) var(--s-3); justify-items: start; font: 400 12px/18px var(--font-lab); color: var(--error); }
+.failed p { margin: 0; }
+.cardBody { overflow: hidden; }
+.inner { padding: var(--s-1) var(--s-3) var(--s-4); }
+.shimmer { display: block; height: 10px; margin: 0 var(--s-3) var(--s-3); border-radius: 2px; background: linear-gradient(90deg, var(--bg-3), var(--line), var(--bg-3)); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; }
+.short { width: 55%; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .shimmer { animation: none; } }

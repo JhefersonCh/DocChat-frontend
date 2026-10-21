@@ -1,0 +1,33 @@
+.graph { display: grid; gap: var(--s-3); min-width: 0; }
+.stage { position: relative; background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab); overflow: hidden; }
+.svg { display: block; width: 100%; height: auto; touch-action: none; cursor: grab; user-select: none; }
+.svg:active { cursor: grabbing; }
+.edge line { stroke: var(--lab-muted); stroke-opacity: 0.55; stroke-width: 1; transition: stroke-opacity 140ms var(--ease-out); }
+.edge .hit { stroke: transparent; stroke-width: 12; cursor: pointer; }
+.edge[data-dim='true'] line { stroke-opacity: 0.1; }
+.edge[data-selected='true'] line:first-child { stroke: var(--amber); stroke-opacity: 1; stroke-width: 2; }
+@media (hover: hover) and (pointer: fine) { .edge:hover line:first-child { stroke: var(--amber); stroke-opacity: 1; } }
+.edgeLabel { font: 500 9px var(--font-lab); fill: var(--amber); text-anchor: middle; paint-order: stroke; stroke: var(--bg-0); stroke-width: 3px; pointer-events: none; }
+.node { cursor: pointer; transition: opacity 140ms var(--ease-out); }
+.node circle { stroke: var(--bg-0); stroke-width: 2; }
+.node text { font: 500 9px var(--font-lab); fill: var(--lab-text); pointer-events: none; paint-order: stroke; stroke: var(--bg-0); stroke-width: 3px; }
+.node[data-dim='true'] { opacity: 0.2; }
+.node[data-selected='true'] circle { stroke: var(--amber); stroke-width: 3; }
+.node:focus-visible, .hit:focus-visible { outline: none; }
+.node:focus-visible circle { stroke: var(--lab-text); }
+.controls { position: absolute; top: var(--s-2); right: var(--s-2); display: grid; gap: 2px; }
+.controls button { width: 28px; height: 28px; font: 500 14px/1 var(--font-lab); color: var(--lab-text); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; transition: transform 140ms var(--ease-out), border-color 140ms var(--ease-out); }
+.controls button:active { transform: scale(0.95); }
+.controls button:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+@media (hover: hover) and (pointer: fine) { .controls button:hover { border-color: var(--amber); } }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-3); font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+.legend i { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; }
+.sideCard { display: grid; gap: var(--s-2); padding: var(--s-3); background: var(--bg-2); border: 1px solid var(--line); border-left: 2px solid var(--amber); border-radius: var(--r-lab); justify-items: start; }
+.cardType { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+.cardName { margin: 0; font: 400 22px/26px var(--font-display); }
+.cardText { margin: 0; font: 400 14px/21px var(--font-read); }
+.cardMeta { margin: 0; font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+.cardQuote { font: italic 400 13px/19px var(--font-read); color: var(--lab-text); quotes: none; }
+.cardActions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
+.hint { margin: 0; font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+@media (prefers-reduced-motion: reduce) { .node, .edge line, .controls button { transition: none; } }
