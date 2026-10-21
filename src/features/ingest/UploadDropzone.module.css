@@ -1,0 +1,35 @@
+.wrap { display: grid; gap: var(--s-3); }
+.zone {
+  position: relative;
+  display: grid;
+  gap: var(--s-2);
+  justify-items: center;
+  align-content: center;
+  min-height: 280px;
+  padding: var(--s-6);
+  color: var(--lab-text);
+  background: transparent;
+  border: 1px dashed var(--lab-muted);
+  border-radius: var(--r-lab);
+  cursor: pointer;
+  transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .zone:hover:not(:disabled) { border-color: var(--amber); background: var(--amber-glow); }
+}
+.zone:active:not(:disabled) { transform: scale(0.99); }
+.zone:disabled { cursor: progress; opacity: 0.7; }
+.over { border-color: var(--amber); border-style: solid; background: var(--amber-glow); }
+.head { font: 500 13px/20px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; }
+.sub { font: 400 12px/18px var(--font-lab); color: var(--lab-muted); text-align: center; }
+.accept { margin-top: var(--s-2); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; color: var(--amber); }
+.corner { position: absolute; width: 10px; height: 10px; border: 0 solid var(--amber); }
+.corner[data-pos='tl'] { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.corner[data-pos='tr'] { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.corner[data-pos='bl'] { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.corner[data-pos='br'] { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.note { margin: 0; font: 400 12px/16px var(--font-lab); color: var(--amber); }
+@media (max-width: 767px) { .zone { min-height: 180px; padding: var(--s-5) var(--s-4); } }
+.paste { justify-self: center; padding: var(--s-1) var(--s-2); color: var(--amber); background: none; border: 0; border-bottom: 1px dotted var(--amber); font: 500 12px/18px var(--font-lab); letter-spacing: 0.06em; cursor: pointer; }
+.paste:disabled { opacity: 0.5; cursor: progress; }
+.paste:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }

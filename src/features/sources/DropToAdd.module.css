@@ -1,0 +1,2 @@
+.zone { position: relative; min-width: 0; min-height: 0; }
+.overlay { position: absolute; inset: 0; z-index: 20; display: grid; place-items: center; margin: 0; background: rgb(11 12 14 / 0.82); border: 2px dashed var(--amber); border-radius: var(--r-lab); color: var(--amber); font: 500 13px/20px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; pointer-events: none; }

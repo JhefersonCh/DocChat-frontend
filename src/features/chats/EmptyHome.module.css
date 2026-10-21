@@ -1,0 +1,29 @@
+.home { display: grid; align-content: center; gap: var(--s-7); height: 100%; padding: var(--s-6); overflow-y: auto; }
+.copy { display: grid; gap: var(--s-4); justify-items: start; max-width: 640px; }
+.kicker { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); }
+.h1 { display: grid; margin: 0; font: 400 clamp(44px, 6vw, 76px)/1.02 var(--font-display); letter-spacing: -0.01em; }
+.h1 span { display: block; }
+.mark { font-style: italic; text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 0.14em; text-decoration-skip-ink: none; }
+.lede { margin: 0; max-width: 46ch; font: 400 13px/20px var(--font-lab); color: var(--lab-muted); }
+.warn { margin: 0; font: 400 12px/18px var(--font-lab); color: var(--amber); }
+.warn a { color: inherit; }
+.steps { display: grid; gap: var(--s-3); margin: var(--s-3) 0 0; padding: var(--s-4) 0 0; list-style: none; border-top: 1px solid var(--line); font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.steps li { display: grid; grid-template-columns: 28px 1fr; gap: var(--s-2); }
+.steps b { color: var(--lab-text); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.n { color: var(--amber); font-weight: 500; }
+
+/* Ejemplar: una hoja con una cita resuelta, a modo de muestra. Decorativo. */
+.specimen { display: none; margin: 0; }
+.sheet { max-width: 340px; padding: var(--s-5); transform: rotate(-1.2deg); }
+.quote { margin: 0; font: 400 17px/28px var(--font-read); }
+.quote mark { color: inherit; background: var(--amber-mark); border-bottom: 2px solid var(--amber-ink); }
+.chip { display: inline-grid; place-items: center; min-width: 22px; height: 20px; margin-left: 3px; padding: 0 6px; vertical-align: 1px; font: 500 11px/1 var(--font-lab); color: var(--ink); background: var(--amber); border-radius: var(--r-pill); }
+.note { display: flex; gap: var(--s-3); margin: var(--s-4) 0 0; padding: var(--s-2) var(--s-3); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); background: var(--paper-2); border-left: 3px solid var(--amber); border-radius: var(--r-lab); }
+.note span { color: var(--amber-ink); }
+.cap { margin: var(--s-4) 0 0 var(--s-2); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+
+@media (min-width: 1200px) {
+  .home { grid-template-columns: minmax(0, 640px) minmax(0, 340px); justify-content: center; gap: var(--s-8); }
+  .specimen { display: block; align-self: center; }
+}
+@media (max-width: 767px) { .home { padding: var(--s-5) var(--s-4); align-content: start; } }

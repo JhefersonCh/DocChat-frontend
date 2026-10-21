@@ -1,0 +1,16 @@
+.card { display: grid; background: var(--bg-2); border: 1px solid var(--line); border-left: 2px solid var(--amber); border-radius: var(--r-lab); }
+.kicker { margin: 0; padding: var(--s-3) var(--s-4) 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+.toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0; background: none; border: 0; cursor: pointer; text-align: left; }
+.toggle .kicker { padding-bottom: var(--s-3); }
+.toggle:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+.chevron { padding: 0 var(--s-4); color: var(--lab-muted); transition: transform 180ms var(--ease-out); }
+.chevron[data-open='true'] { transform: rotate(180deg); }
+.body { overflow: hidden; }
+.inner { display: grid; gap: var(--s-3); padding: var(--s-2) var(--s-4) var(--s-4); max-height: 46dvh; overflow-y: auto; }
+.summary { margin: 0; font: 400 15px/22px var(--font-read); color: var(--lab-text); }
+.state { margin: 0; font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.pending, .generate { display: grid; gap: var(--s-2); justify-items: start; }
+.shimmer { height: 12px; width: 100%; background: linear-gradient(90deg, var(--bg-3), var(--line), var(--bg-3)); background-size: 200% 100%; border-radius: var(--r-lab); animation: sweep 1.6s linear infinite; }
+.short { width: 62%; }
+@keyframes sweep { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .shimmer { animation: none; } .chevron { transition: none; } }

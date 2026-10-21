@@ -1,0 +1,5 @@
+.list { display: grid; gap: var(--s-3); margin: 0 0 var(--s-3); padding: 0; list-style: none; }
+.item { display: grid; gap: var(--s-1); }
+.head { display: flex; align-items: center; gap: var(--s-2); min-width: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.04em; color: var(--lab-muted); }
+.alias { padding: 0 6px; color: var(--ink); background: var(--amber); border-radius: var(--r-pill); font-weight: 600; }
+.name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

@@ -1,0 +1,65 @@
+.item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  border-left: 2px solid transparent;
+  transition: background-color 140ms var(--ease-out), border-color 140ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .item:hover { background: var(--bg-2); } }
+.active { background: var(--bg-2); border-left-color: var(--amber); }
+.link {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-1) var(--s-2) var(--s-4);
+  color: var(--lab-text);
+  text-decoration: none;
+}
+.glyph { flex: none; display: grid; place-items: center; width: 16px; color: var(--lab-muted); }
+.blank { opacity: 0.55; }
+.active .glyph { color: var(--amber); }
+.text { display: grid; flex: 1; min-width: 0; gap: 0; }
+.title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 400 13px/20px var(--font-lab); }
+.untitled { color: var(--lab-muted); font-style: italic; }
+.when { flex: none; font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+.del {
+  flex: none;
+  width: 32px;
+  font: 400 18px/1 var(--font-lab);
+  color: var(--lab-muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 140ms var(--ease-out), color 140ms var(--ease-out);
+}
+.item:hover .del, .item:focus-within .del, .del:focus-visible { opacity: 1; }
+@media (hover: none) { .del { opacity: 0.7; } }
+.del:hover { color: var(--error); }
+.confirm { display: grid; gap: var(--s-2); padding: var(--s-3); border-left: 2px solid var(--error); background: var(--bg-2); }
+.ask { font: 400 12px/16px var(--font-lab); color: var(--lab-text); }
+.confirmBtns { display: flex; gap: var(--s-2); }
+.yes, .no {
+  min-height: 28px;
+  padding: 0 var(--s-3);
+  font: 500 11px/16px var(--font-lab);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lab);
+  color: var(--lab-text);
+  cursor: pointer;
+}
+.yes { color: var(--error); border-color: var(--error); }
+.yes:disabled { opacity: 0.5; }
+
+/* Riel (tablet): solo glifo; el título va en tooltip. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .text, .del, .when { display: none; }
+  .link { justify-content: center; padding: var(--s-2) 0; }
+  .confirm { display: none; }
+}
+.count { font: 400 11px/14px var(--font-lab); color: var(--amber); }

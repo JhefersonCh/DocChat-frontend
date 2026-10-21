@@ -1,0 +1,29 @@
+.scrim { position: fixed; inset: 0; z-index: 70; background: rgb(0 0 0 / 0.65); }
+.center { position: fixed; inset: 0; z-index: 71; display: grid; place-items: center; padding: var(--s-4); pointer-events: none; }
+.panel {
+  pointer-events: auto; display: grid; gap: var(--s-2); width: min(680px, 100%); max-height: 100%; overflow: auto;
+  padding: var(--s-5); background: var(--bg-1); border: 1px solid var(--line); border-top: 2px solid var(--amber);
+  border-radius: var(--r-lab); box-shadow: var(--shadow-paper); outline: none; overscroll-behavior: contain;
+}
+.kicker { margin: 0; font: 500 11px/16px var(--font-lab); letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+.title { margin: 0 0 var(--s-2); font: 400 32px/36px var(--font-display); color: var(--lab-text); }
+.label { font: 500 11px/16px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lab-muted); }
+.label span { text-transform: none; letter-spacing: 0; }
+.input, .area {
+  width: 100%; box-sizing: border-box; color: var(--lab-text); background: var(--bg-0); border: 1px solid var(--line); border-radius: var(--r-lab);
+  font: 400 14px/20px var(--font-lab); padding: var(--s-2) var(--s-3); transition: border-color 140ms var(--ease-out);
+}
+.input:focus, .area:focus { outline: none; border-color: var(--amber); }
+.area { min-height: 260px; height: 38dvh; resize: vertical; }
+.area[aria-invalid='true'] { border-color: var(--error); }
+.meta { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); flex-wrap: wrap; font: 400 12px/18px var(--font-lab); color: var(--lab-muted); }
+.link { padding: 0; color: var(--amber); background: none; border: 0; border-bottom: 1px dotted var(--amber); font: inherit; cursor: pointer; }
+.link:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.warn { margin: 0; font: 400 12px/16px var(--font-lab); color: var(--amber); }
+.err { margin: 0; font: 400 12px/16px var(--font-lab); color: var(--error); }
+.actions { display: flex; justify-content: flex-end; gap: var(--s-2); margin-top: var(--s-2); }
+@media (max-width: 767px) {
+  .panel { padding: var(--s-4); }
+  .title { font-size: 26px; line-height: 30px; }
+  .area { min-height: 180px; height: 30dvh; }
+}

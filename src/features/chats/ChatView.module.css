@@ -1,0 +1,32 @@
+.view {
+  display: grid;
+  height: 100%;
+  min-height: 0;
+  grid-template-columns: 1fr var(--chat-w);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  grid-template-areas: 'head chat' 'sources chat' 'viewer chat';
+}
+.head { grid-area: head; display: grid; gap: var(--s-1); padding: var(--s-5) var(--s-6) var(--s-3); min-width: 0; }
+.title { margin: 0; font: 400 40px/44px var(--font-display); overflow-wrap: anywhere; }
+.untitled { color: var(--lab-muted); }
+.meta { margin: 0; font: 400 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); }
+.sources { grid-area: sources; min-width: 0; }
+.dropArea { grid-area: viewer; display: grid; min-width: 0; min-height: 0; }
+.viewer { min-width: 0; min-height: 0; overflow-y: auto; padding: var(--s-3) var(--s-6) var(--s-6); }
+.viewer[data-fill='true'] { overflow: hidden; padding-bottom: var(--s-4); }
+.viewer[data-fill='true'] .stage { height: 100%; grid-template-rows: minmax(0, 1fr); }
+.stage { display: grid; gap: var(--s-4); align-content: start; }
+.chat { grid-area: chat; min-width: 0; min-height: 0; background: var(--bg-1); border-left: 1px solid var(--line); }
+.loading { margin: 0; padding: var(--s-6); color: var(--lab-muted); }
+.fallback { padding: var(--s-6); max-width: 560px; }
+
+@media (max-width: 1199px) { .view { grid-template-columns: 1fr 400px; } }
+/* Teléfono: cabecera + botón "Documento" (abre el sheet) + chat a pantalla completa con composer fijo. */
+@media (max-width: 767px) {
+  .view { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto minmax(0, 1fr); grid-template-areas: 'head' 'sources' 'viewer' 'chat'; }
+  .head { padding: var(--s-3) var(--s-4) var(--s-2); }
+  .title { font-size: 30px; line-height: 34px; }
+  .viewer, .viewer[data-fill='true'] { max-height: 44dvh; padding: var(--s-2) var(--s-4) var(--s-3); overflow-y: auto; }
+  .viewer[data-fill='true'] .stage { height: auto; }
+  .chat { border-left: 0; border-top: 1px solid var(--line); }
+}

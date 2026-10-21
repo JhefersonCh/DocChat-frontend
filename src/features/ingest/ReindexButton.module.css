@@ -1,0 +1,1 @@
+.wrap { display: grid; gap: var(--s-2); justify-items: start; }

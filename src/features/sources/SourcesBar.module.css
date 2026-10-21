@@ -1,0 +1,34 @@
+.bar { display: grid; gap: var(--s-1); min-width: 0; padding: 0 var(--s-6) var(--s-2); }
+.list { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: 0; padding: 0 0 var(--s-1); list-style: none; overflow-x: auto; scrollbar-width: thin; }
+.chip { flex: none; display: inline-flex; align-items: center; max-width: min(320px, 78vw); min-height: 32px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.04em; color: var(--lab-text); transition: border-color 140ms var(--ease-out), opacity 140ms var(--ease-out); }
+.chip[data-selected='true'] { border-color: var(--amber); box-shadow: inset 0 -2px 0 var(--amber); }
+.chip[data-active='false'] { opacity: 0.55; }
+.chip[data-active='false'] .name { text-decoration: line-through; text-decoration-color: var(--lab-muted); }
+.chip[data-failed='true'] { border-color: var(--error); }
+.chip[data-confirming='true'] { gap: var(--s-2); padding: 0 var(--s-2); border-color: var(--error); }
+.main { display: inline-flex; align-items: center; gap: var(--s-2); min-width: 0; min-height: 30px; padding: 0 var(--s-2) 0 var(--s-3); color: inherit; background: transparent; border: 0; font: inherit; letter-spacing: inherit; cursor: pointer; }
+.main:focus-visible, .x:focus-visible, .add:focus-visible, .toggle:focus-within { outline: 2px solid var(--amber); outline-offset: 1px; }
+.icon { flex: none; color: var(--amber); }
+.alias { flex: none; padding: 0 5px; color: var(--bg-0); background: var(--amber); border-radius: var(--r-pill); font-weight: 600; }
+.name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.status { flex: none; color: var(--lab-muted); text-transform: uppercase; font-size: 10px; }
+.status[data-failed='true'] { color: var(--error); }
+.chip[data-busy='true'] .status::after { content: ''; display: inline-block; width: 4px; height: 4px; margin-left: 5px; border-radius: 50%; background: var(--amber); animation: blink 1s steps(2) infinite; vertical-align: middle; }
+@keyframes blink { 50% { opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .chip[data-busy='true'] .status::after { animation: none; } }
+.toggle { display: inline-grid; place-items: center; width: 28px; align-self: stretch; border-left: 1px solid var(--line); cursor: pointer; }
+.toggle input { accent-color: var(--amber); width: 14px; height: 14px; margin: 0; cursor: pointer; }
+.x { flex: none; width: 28px; align-self: stretch; color: var(--lab-muted); background: transparent; border: 0; border-left: 1px solid var(--line); font: 400 16px/1 var(--font-lab); cursor: pointer; }
+@media (hover: hover) and (pointer: fine) { .x:hover { color: var(--error); } .main:hover { color: var(--amber); } }
+.ask { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+.danger, .ghost { min-height: 26px; padding: 0 var(--s-2); font: 500 11px/16px var(--font-lab); text-transform: uppercase; background: transparent; border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; color: var(--lab-text); }
+.danger { color: var(--error); border-color: var(--error); }
+.addItem { flex: none; }
+.add { min-height: 32px; padding: 0 var(--s-3); color: var(--amber); background: transparent; border: 1px dashed var(--amber); border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 140ms var(--ease-out), transform 120ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .add:hover:not(:disabled) { background: var(--amber-glow); } }
+.add:active:not(:disabled) { transform: scale(0.97); }
+.add:disabled { opacity: 0.45; cursor: not-allowed; }
+.hint { margin: 0; font: 400 11px/16px var(--font-lab); color: var(--lab-muted); }
+@media (pointer: coarse) { .chip, .main, .add { min-height: 44px; } .toggle, .x { width: 44px; } }
+@media (max-width: 767px) { .bar { padding: 0 var(--s-4) var(--s-2); } .list { flex-wrap: nowrap; } }
+.chip[data-warn='true'] { border-color: var(--amber); }
