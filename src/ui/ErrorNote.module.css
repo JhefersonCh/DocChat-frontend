@@ -1,0 +1,17 @@
+.note {
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--line);
+  border-left-width: 2px;
+  border-radius: var(--r-lab);
+  background: var(--bg-2);
+}
+.error { border-left-color: var(--error); }
+.warn { border-left-color: var(--amber); }
+.title { margin: 0; font: 400 13px/20px var(--font-lab); color: var(--lab-text); }
+.detail {
+  margin: var(--s-1) 0 0;
+  font: 400 12px/16px var(--font-lab);
+  color: var(--lab-muted);
+  overflow-wrap: anywhere;
+}
+.actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-3); }

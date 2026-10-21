@@ -1,0 +1,7 @@
+.root { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: var(--s-5); background: rgb(11 12 14 / 0.92); outline: none; cursor: zoom-out; }
+.fig { margin: 0; display: grid; gap: var(--s-2); justify-items: center; max-width: 100%; max-height: 100%; cursor: default; }
+.img { max-width: min(92vw, 1100px); max-height: 80dvh; object-fit: contain; background: var(--bg-3) var(--grain); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.cap { font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); text-align: center; }
+.close { position: absolute; top: var(--s-3); right: var(--s-3); min-height: 36px; padding: 0 var(--s-3); background: var(--bg-2); color: var(--lab-text); border: 1px solid var(--line); border-radius: var(--r-lab); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+.close:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+@media (pointer: coarse) { .close { min-height: 44px; } }

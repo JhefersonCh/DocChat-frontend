@@ -1,0 +1,51 @@
+.bar {
+  position: relative;
+  display: flex;
+  gap: 3px;
+  height: 18px;
+  overflow: hidden;
+}
+.tick {
+  position: relative;
+  flex: 1;
+  background: var(--bg-3);
+}
+.tick::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--amber);
+  opacity: 0;
+  animation: tick-lit 1.4s linear infinite;
+  animation-delay: calc(var(--i) * 1.4s);
+}
+@keyframes tick-lit {
+  0% { opacity: 0; }
+  2% { opacity: 1; }
+  16% { opacity: 0.08; }
+  30%, 100% { opacity: 0; }
+}
+.sweep {
+  position: absolute;
+  inset: 0;
+  border-right: 2px solid var(--amber);
+  box-shadow: 8px 0 14px -4px var(--amber-glow);
+  transform: translateX(-100%);
+  animation: sweep 1.4s linear infinite;
+  will-change: transform;
+}
+@keyframes sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+/* Reduced-motion stand-in for the sweep: three dots, one lit per second. Opacity only, no movement. */
+.dots { display: none; }
+.dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); opacity: 0.25; animation: dot 3s steps(1, end) infinite; animation-delay: calc(var(--k) * 1s); }
+.dots i:nth-child(1) { --k: 0; } .dots i:nth-child(2) { --k: 1; } .dots i:nth-child(3) { --k: 2; }
+@keyframes dot { 0% { opacity: 1; } 33.3%, 100% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) {
+  .dots { position: absolute; right: 6px; top: 0; bottom: 0; display: flex; align-items: center; gap: 5px; padding: 0 8px; background: var(--bg-2); }
+  .tick::after, .sweep { animation: none; }
+  .sweep { display: none; }
+  .tick:nth-child(3n)::after { opacity: 0.35; }
+}

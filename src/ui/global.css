@@ -1,0 +1,72 @@
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource-variable/newsreader/opsz.css';
+@import '@fontsource-variable/newsreader/opsz-italic.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import './tokens.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg-0);
+  color: var(--lab-text);
+  font: 400 13px/20px var(--font-lab);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Grilla del laboratorio: 1px cada 24px en --line al 35 %, respirando (8 s). */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  opacity: 0.35;
+  animation: grid-breathe 8s ease-in-out infinite;
+}
+
+@keyframes grid-breathe {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; opacity: 0.3; }
+}
+
+/* Papel: superficie editorial con grano. */
+.paper {
+  background-color: var(--paper);
+  background-image: var(--grain);
+  color: var(--ink);
+  border-radius: var(--r-paper);
+  box-shadow: var(--shadow-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.paper :focus-visible { outline-color: var(--amber-ink); }
+
+::selection { background: var(--amber-mark); }
+
+/* Revelado escalonado de la carga (Fase 7): `className="rise"` + `style={{ '--d': n }}` (70 ms por paso). */
+.rise { animation: rise 520ms var(--ease-out) backwards; animation-delay: calc(var(--d, 0) * 70ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); filter: blur(3px); } }
+@keyframes rise-calm { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: rise-calm 200ms linear backwards; animation-delay: 0ms; }
+}
+
+/* Sentence being read aloud (voice mode): a soft amber wash over the paper, set via CSS.highlights. */
+::highlight(spoken) { background-color: var(--amber-mark); color: inherit; }

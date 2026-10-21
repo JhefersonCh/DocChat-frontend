@@ -1,0 +1,19 @@
+.scrim { position: fixed; inset: 0; z-index: 60; background: rgb(0 0 0 / 0.6); }
+.panel {
+  position: fixed; z-index: 61; display: grid; min-height: 0;
+  background: var(--bg-0); border: 1px solid var(--line); outline: none;
+  overscroll-behavior: contain;
+}
+.bottom {
+  left: 0; right: 0; bottom: 0; height: 85dvh;
+  grid-template-rows: auto minmax(0, 1fr);
+  border-bottom: 0; border-radius: var(--r-paper) var(--r-paper) 0 0;
+  box-shadow: 0 -12px 32px -12px rgb(0 0 0 / .6);
+}
+.left { top: 0; bottom: 0; left: 0; width: min(86vw, 320px); border-left: 0; grid-template-rows: minmax(0, 1fr); }
+.grip { display: grid; gap: var(--s-2); padding: var(--s-2) var(--s-3) var(--s-2); touch-action: none; cursor: grab; user-select: none; }
+.grip:active { cursor: grabbing; }
+.handle { justify-self: center; width: 40px; height: 4px; border-radius: var(--r-pill); background: var(--lab-muted); opacity: 0.6; }
+.body { min-height: 0; min-width: 0; overflow: hidden; }
+.bottom .body { padding: 0 var(--s-2) var(--s-2); }
+.left .body { height: 100%; }

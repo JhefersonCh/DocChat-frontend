@@ -1,0 +1,65 @@
+:root {
+  /* Laboratorio: capas oscuras (de más profunda a más alta) */
+  --bg-0: #0B0C0E;
+  --bg-1: #121418;
+  --bg-2: #1A1D22;
+  --bg-3: #252931;
+  --line: #2E333B;
+  --lab-text: #D9DCE1;
+  --lab-muted: #8A8F98;
+
+  /* Editorial: papel */
+  --paper: #F2EBDD;
+  --paper-2: #E8DFCC;
+  --ink: #1C1A17;
+  --ink-muted: #5E574C;
+
+  /* Señal única */
+  --amber: #FFB000;
+  --amber-hi: #FFC233;
+  --amber-ink: #805300;
+  --amber-glow: rgb(255 176 0 / 0.18);
+  --amber-mark: rgb(255 176 0 / 0.38);
+
+  /* Error */
+  --error: #FF6B5E;
+  --error-ink: #A3261B;
+
+  /* Espaciado (base 4px) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* Radios */
+  --r-lab: 2px;
+  --r-paper: 6px;
+  --r-pill: 999px;
+
+  /* Sombra (solo sobre papel) */
+  --shadow-paper: 0 1px 0 rgb(0 0 0 / .4), 0 12px 32px -12px rgb(0 0 0 / .6);
+
+  /* Textura */
+  --grid-size: 24px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+
+  /* Tipografía */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-read: 'Newsreader Variable', Georgia, serif;
+  --font-lab: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Layout */
+  --sidebar-w: 260px;
+  --rail-w: 56px;
+  --chat-w: minmax(380px, 32vw);
+}
+
+/* Los media queries no admiten var(): --bp-md: 768px, --bp-lg: 1200px
+   se documentan acá y se repiten literales en app/AppShell.module.css. */
