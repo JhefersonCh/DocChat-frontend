@@ -1,0 +1,6 @@
+.line { margin: 0; font: 400 12px/16px var(--font-lab); overflow-wrap: anywhere; }
+.ok { color: var(--amber); }
+.bad { color: var(--error); }
+.run { color: var(--lab-muted); }
+.dots::after { content: '···'; animation: dots 1.2s steps(1) infinite; }
+@keyframes dots { 0% { content: '·'; } 33% { content: '··'; } 66% { content: '···'; } }

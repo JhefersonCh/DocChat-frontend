@@ -1,0 +1,13 @@
+.col { display: grid; align-content: start; gap: var(--s-3); min-width: 0; }
+.head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.title { margin: 0; font: 400 24px/30px var(--font-display); color: var(--lab-text); }
+.hint, .empty { margin: 0; font: 400 12px/18px var(--font-lab); color: var(--lab-muted); max-width: 56ch; }
+.notice {
+  margin: 0;
+  padding: var(--s-2) var(--s-3);
+  font: 400 12px/18px var(--font-lab);
+  color: var(--amber);
+  border: 1px dashed var(--amber);
+  border-radius: var(--r-lab);
+}
+.list { display: grid; gap: var(--s-3); margin: 0; padding: 0; list-style: none; }
