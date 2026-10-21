@@ -1,0 +1,53 @@
+.wrap { position: relative; display: grid; gap: 2px; }
+.strip { position: relative; height: calc(8px * var(--lanes) + 6px); min-height: 22px; background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.ticks { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.caption { margin: 0; font: 500 10px/14px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lab-muted); }
+
+.tick {
+  --inset: 3px;
+  position: absolute; pointer-events: auto; padding: 0; cursor: pointer; border: 0; border-radius: 1px; min-width: 4px;
+  top: calc(var(--inset) + (100% - var(--inset) * 2) * var(--lane) / var(--lanes));
+  height: calc((100% - var(--inset) * 2) / var(--lanes) - 1px);
+  background: rgb(255 176 0 / calc(0.2 + var(--heat) * 0.6));
+  transform-origin: center top;
+  animation: ignite 380ms var(--ease-out) var(--delay, 0ms) backwards;
+  transition: background-color 260ms var(--ease-out), box-shadow 260ms var(--ease-out), outline-color 260ms var(--ease-out);
+}
+.tick::after { content: ''; position: absolute; inset: -4px -3px; } /* fatter hit area than the bar */
+.tick[data-locked='true'][data-cited='false'] { background: rgb(255 176 0 / calc(0.08 + var(--heat) * 0.22)); }
+.tick[data-cited='true'] { background: var(--amber-hi); outline: 1px solid var(--paper); box-shadow: 0 0 8px var(--amber-glow); z-index: 1; }
+.tick[data-cited='true'][data-locked='true'] { animation: ignite 380ms var(--ease-out) var(--delay, 0ms) backwards, lock 560ms var(--ease-out) var(--lock, 0ms) backwards; }
+.tick[data-panorama='true'] { background: transparent; outline: 1px dashed rgb(255 176 0 / calc(0.35 + var(--heat) * 0.5)); outline-offset: -1px; }
+.tick[data-panorama='true'][data-cited='true'] { background: rgb(255 194 51 / 0.55); outline: 1px solid var(--amber-hi); }
+@media (hover: hover) and (pointer: fine) { .tick:hover { background: var(--amber); outline: 1px solid var(--amber-hi); z-index: 2; } }
+.tick:focus-visible { outline: 2px solid var(--lab-text); outline-offset: 1px; z-index: 3; }
+
+.sweep {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 2px; pointer-events: none; opacity: 0;
+  background: linear-gradient(180deg, transparent, var(--amber-hi) 30%, var(--amber-hi) 70%, transparent);
+  box-shadow: 0 0 10px 1px var(--amber);
+  animation: sweep var(--sweep) cubic-bezier(0.45, 0, 0.25, 1) var(--base) backwards;
+}
+@keyframes sweep { 0% { left: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: calc(100% - 2px); opacity: 0; } }
+@keyframes ignite { 0% { opacity: 0; transform: scaleY(0.2); } 55% { opacity: 1; transform: scaleY(1.35); } 100% { transform: scaleY(1); } }
+@keyframes lock { 0% { transform: scale(1); } 35% { transform: scale(1.25, 1.6); box-shadow: 0 0 14px 3px var(--amber); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .sweep { display: none; }
+  .tick, .tick[data-cited='true'][data-locked='true'] { animation: none; transition: none; }
+}
+
+.tip {
+  position: absolute; bottom: calc(100% + 8px); transform: translateX(-50%); z-index: 5; display: grid; gap: 1px; min-width: 150px; max-width: 240px; padding: var(--s-2) var(--s-3);
+  font: 500 10px/14px var(--font-lab); letter-spacing: 0.04em; color: var(--lab-text); background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lab);
+  box-shadow: 0 8px 24px -8px rgb(0 0 0 / 0.6); pointer-events: none; animation: tip 120ms var(--ease-out);
+}
+.tip[data-flip='true'] { transform: translateX(-85%); }
+.tip span:first-child { color: var(--amber); }
+@keyframes tip { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tip { animation: none; } }
+
+/* Video frames: hatched (like image hits on the page strip) so they read apart from the solid speech ticks. */
+.tick[data-media='true'] { border-radius: 0; min-width: 5px; background: repeating-linear-gradient(135deg, rgb(255 176 0 / calc(0.35 + var(--heat) * 0.6)) 0 2px, rgb(255 176 0 / 0.08) 2px 4px); outline: 1px solid rgb(255 176 0 / 0.7); outline-offset: -1px; }
+.tick[data-media='true'][data-cited='true'] { background: repeating-linear-gradient(135deg, var(--amber-hi) 0 2px, rgb(255 194 51 / 0.3) 2px 4px); outline: 1px solid var(--paper); outline-offset: 0; }
+.tick[data-media='true'][data-locked='true'][data-cited='false'] { opacity: 0.55; }
+@media (hover: hover) and (pointer: fine) { .tick[data-media='true']:hover { background: repeating-linear-gradient(135deg, var(--amber) 0 2px, rgb(255 176 0 / 0.35) 2px 4px); } }

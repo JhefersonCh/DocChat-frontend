@@ -1,0 +1,24 @@
+.root { display: grid; grid-template-rows: auto minmax(260px, 1fr); gap: var(--s-3); height: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; outline: none; }
+.deck { display: grid; gap: var(--s-3); padding: var(--s-3); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lab); }
+.stage { position: relative; display: grid; place-items: center; background: #000; border: 1px solid var(--line); border-radius: var(--r-lab); overflow: hidden; }
+.video { display: block; width: 100%; max-height: min(30dvh, 380px); object-fit: contain; background: #000; cursor: pointer; }
+.big { position: absolute; inset: 0; margin: auto; width: 56px; height: 56px; display: grid; place-items: center; padding: 0; color: var(--bg-0); background: var(--amber); border: 0; border-radius: var(--r-pill); cursor: pointer; box-shadow: 0 0 0 6px var(--amber-glow); transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out); }
+.big svg { fill: currentColor; margin-left: 2px; }
+.big[data-playing='true'] { opacity: 0; transform: scale(1.25); pointer-events: none; }
+.state { margin: 0; padding: var(--s-6) var(--s-4); text-align: center; color: var(--lab-muted); font: 400 12px/18px var(--font-lab); }
+.range { margin: 0; font: 500 10px/14px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); }
+.fs { flex: none; min-width: 40px; min-height: 32px; padding: 0 var(--s-2); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lab-muted); background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; transition: color 140ms var(--ease-out), border-color 140ms var(--ease-out), transform 120ms var(--ease-out); }
+.fs:active { transform: scale(0.97); }
+.fs[aria-pressed='true'] { color: var(--amber); border-color: var(--amber); }
+.fs:focus-visible, .cap:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) { .fs:hover, .cap:hover { color: var(--lab-text); } }
+@media (pointer: coarse) { .fs { min-height: 44px; min-width: 44px; } }
+.lower { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--s-2); min-height: 0; }
+.tbar { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); font: 500 10px/14px var(--font-lab); letter-spacing: 0.08em; text-transform: uppercase; color: var(--lab-muted); }
+.cap { min-height: 24px; padding: 0 var(--s-2); font: inherit; color: var(--lab-muted); background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--r-lab); cursor: pointer; transition: color 140ms var(--ease-out), border-color 140ms var(--ease-out); }
+.cap[aria-pressed='true'] { color: var(--amber); border-color: var(--amber); }
+/* Fullscreen: the whole deck (picture + lanes + transport) grows to the screen; the picture takes the slack. */
+.deck:fullscreen { grid-template-rows: minmax(0, 1fr) auto auto auto auto auto; height: 100vh; padding: var(--s-4); background: var(--bg-0); }
+.deck:fullscreen .stage { min-height: 0; }
+.deck:fullscreen .video { height: 100%; max-height: none; aspect-ratio: auto !important; }
+@media (prefers-reduced-motion: reduce) { .big, .fs, .cap { transition: none; } .big[data-playing='true'] { transform: none; } }

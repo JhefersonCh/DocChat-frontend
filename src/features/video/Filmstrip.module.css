@@ -1,0 +1,18 @@
+.wrap { position: relative; }
+.strip { position: relative; height: 54px; cursor: pointer; touch-action: none; user-select: none; background: var(--bg-1) var(--grain); border: 1px solid var(--line); border-radius: var(--r-lab); overflow: hidden; }
+.tiles { position: absolute; inset: 0; display: grid; }
+.tile { position: relative; overflow: hidden; background: var(--bg-3); border-right: 1px solid rgb(0 0 0 / 0.5); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.78; transition: opacity 160ms var(--ease-out); }
+.tile[data-cited='true'] img { opacity: 1; }
+.tile[data-cited='true']::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 2px var(--amber); }
+@media (hover: hover) and (pointer: fine) { .strip:hover .tile img { opacity: 0.95; } }
+.ticks { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; pointer-events: none; background: linear-gradient(0deg, rgb(0 0 0 / 0.55), transparent); }
+.tick { position: absolute; bottom: 0; width: 1px; height: 5px; margin-left: -0.5px; background: rgb(217 220 225 / 0.7); }
+.tick[data-cited='true'] { width: 3px; margin-left: -1.5px; height: 6px; background: var(--amber-hi); box-shadow: 0 0 6px var(--amber); }
+.head { position: absolute; top: 0; bottom: 0; width: 1px; margin-left: -0.5px; background: var(--amber-hi); box-shadow: 0 0 6px 1px var(--amber); pointer-events: none; z-index: 2; }
+.pop { position: absolute; bottom: calc(100% + 6px); z-index: 6; display: grid; gap: 2px; transform: translateX(-50%); padding: 3px; background: var(--bg-3); border: 1px solid var(--line); border-radius: var(--r-lab); box-shadow: 0 8px 24px -8px rgb(0 0 0 / 0.7); pointer-events: none; animation: pop 120ms var(--ease-out); }
+.pop img { display: block; height: auto; border-radius: 2px; }
+.pop b { font: 500 10px/14px var(--font-lab); letter-spacing: 0.04em; color: var(--lab-text); text-align: center; }
+@keyframes pop { from { opacity: 0; transform: translate(-50%, 4px); } }
+@media (hover: none) { .pop { display: none; } }
+@media (prefers-reduced-motion: reduce) { .tile img { transition: none; } .pop { animation: none; } }
