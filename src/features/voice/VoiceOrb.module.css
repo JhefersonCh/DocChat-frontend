@@ -1,0 +1,32 @@
+.orb { --size: 56px; position: relative; flex: none; width: var(--size); height: var(--size); display: grid; place-items: center; color: var(--amber); }
+.core { position: absolute; width: 38%; height: 38%; border-radius: 50%; background: var(--amber); box-shadow: 0 0 18px 2px var(--amber-glow); transition: background-color 180ms var(--ease-out), opacity 180ms var(--ease-out); will-change: transform; }
+.ring { position: absolute; inset: 0; border-radius: 50%; border: 1px solid currentColor; opacity: 0.25; }
+.arc { position: absolute; inset: 4px; border-radius: 50%; border: 2px solid transparent; border-top-color: currentColor; opacity: 0; transition: opacity 180ms var(--ease-out); }
+
+/* listening: the ring breathes slowly, the core is dim */
+.orb[data-phase='listening'] .core { opacity: 0.55; }
+.orb[data-phase='listening'] .ring { animation: breathe 2.8s var(--ease-out) infinite; }
+/* hearing: the core follows the voice (set from JS); rings tighten */
+.orb[data-phase='hearing'] .ring { opacity: 0.55; }
+/* transcribing / thinking: a quiet arc turns */
+.orb[data-phase='transcribing'] .core, .orb[data-phase='thinking'] .core, .orb[data-phase='loading'] .core { opacity: 0.35; }
+.orb[data-phase='transcribing'] .arc, .orb[data-phase='thinking'] .arc, .orb[data-phase='loading'] .arc { opacity: 0.9; animation: turn 1s linear infinite; }
+/* speaking: ripples leave the core while it pulses with the audio level */
+.orb[data-phase='speaking'] .ring { animation: ripple 1.6s var(--ease-out) infinite; }
+.orb[data-phase='speaking'] .ring + .ring { animation-delay: 0.8s; }
+.orb[data-phase='error'] { color: var(--error); }
+.orb[data-phase='error'] .core { background: var(--error); box-shadow: none; opacity: 0.8; }
+.orb[data-phase='off'] .core { opacity: 0.2; }
+
+@keyframes breathe { 0%, 100% { transform: scale(0.82); opacity: 0.18; } 50% { transform: scale(1); opacity: 0.42; } }
+@keyframes ripple { from { transform: scale(0.5); opacity: 0.55; } to { transform: scale(1.15); opacity: 0; } }
+@keyframes turn { to { transform: rotate(360deg); } }
+
+/* Reduced motion: nothing moves; state reads from ring weight and the label next to the orb. */
+@media (prefers-reduced-motion: reduce) {
+  .orb .ring, .orb .arc { animation: none !important; }
+  .orb[data-phase='listening'] .ring { opacity: 0.35; }
+  .orb[data-phase='speaking'] .ring { opacity: 0.6; transform: scale(0.9); }
+  .orb[data-phase='speaking'] .ring + .ring { opacity: 0.3; transform: scale(1.05); }
+  .orb[data-phase='transcribing'] .arc, .orb[data-phase='thinking'] .arc, .orb[data-phase='loading'] .arc { opacity: 0.6; }
+}

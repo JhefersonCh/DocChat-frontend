@@ -1,0 +1,6 @@
+.listen { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 28px; padding: 0 var(--s-2); font: 500 11px/16px var(--font-lab); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); background: transparent; border: 1px solid transparent; border-radius: var(--r-lab); cursor: pointer; transition: color 140ms var(--ease-out), background-color 140ms var(--ease-out), transform 140ms var(--ease-out); }
+.listen:active { transform: scale(0.97); }
+.listen:focus-visible { outline: 2px solid var(--amber-ink); outline-offset: 2px; }
+.listen[data-playing='true'] { color: var(--amber-ink); background: var(--amber-glow); }
+@media (hover: hover) and (pointer: fine) { .listen:hover { color: var(--ink); background: rgb(0 0 0 / .06); } }
+@media (max-width: 767px) { .listen { min-height: 36px; } }
